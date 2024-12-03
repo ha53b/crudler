@@ -1,27 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text } from "react-native";
+import Screen from "../layout/Screen";
+import ModuleForm from "../entity/modules/ModuleForm.js";
 
-const ModuleListScreen = () => {
-  // Initialisations ---------------------
-  // State -------------------------------
-  // Handlers ----------------------------
-  // View --------------------------------
+const ModuleModifyScreen = ({ navigation, route }) => {
+  // Initialisations -------------------
+  const { module, onModify } = route.params;
+
+  // State-------------------
+  // Handlers-------------------
+  const handleCancel = () => navigation.goBack;
+  // View-------------------
   return (
-    <View style={styles.container}>
-      <Text>List</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Screen>
+      <ModuleForm
+        originalModule={module}
+        onSumbit={onModify}
+        onCancel={handleCancel}
+      />
+    </Screen>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  
-}); 
+const styles = StyleSheet.create({});
 
-export default ModuleListScreen;
+export default ModuleModifyScreen;
