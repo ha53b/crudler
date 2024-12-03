@@ -1,28 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from "react-native";
+import Screen from "../layout/Screen";
+import ModuleForm from "../entity/modules/ModuleForm";
 
-const ModuleAddScreen = () => {
-  // Initialisations ---------------------
-  // State -------------------------------
-  // Handlers ----------------------------
-  // View --------------------------------
+const ModuleAddScreen = ({ navigation, route }) => {
+  // Initialisations -------------------
+  const { onAdd } = route.params;
+
+  // State-----------------
+
+  // Handlers------------
+  const handelCancel = navigation.goBack;
+
+  // View--------------
   return (
-    <View style={styles.container}>
-      <Text>Add</Text>
-      <StatusBar style="light" />
-    </View>
+    <Screen>
+      <ModuleForm onSumbit={onAdd} onCancel={handelCancel} />
+    </Screen>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  
-}); 
+const styles = StyleSheet.create({});
 
 export default ModuleAddScreen;
-matchMedia;

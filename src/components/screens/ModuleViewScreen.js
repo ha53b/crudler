@@ -1,27 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from "react-native";
+import Screen from "../layout/Screen";
+import ModuleView from "../entity/modules/ModuleView";
 
-const ModuleViewScreen = () => {
-  // Initialisations ---------------------
-  // State -------------------------------
-  // Handlers ----------------------------
-  // View --------------------------------
+const ModuleViewScreen = ({ navigation, route }) => {
+  // Initialisations -------------------
+  const { module, onDelete, onModify } = route.params;
+  // State----------------------------
+  // Handlers-------------------------
+  const gotoModifyScreen = () =>
+    navigation.navigate("ModuleModifyScreen", { module, onModify });
+  // View------------------------------
   return (
-    <View style={styles.container}>
-      <Text>View</Text>
-      <StatusBar style="light" />
-    </View>
+    <Screen>
+      <ModuleView
+        module={module}
+        onDelete={onDelete}
+        onModify={gotoModifyScreen}
+      />
+    </Screen>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  
-}); 
-
+const styles = StyleSheet.create({});
+//done
 export default ModuleViewScreen;
